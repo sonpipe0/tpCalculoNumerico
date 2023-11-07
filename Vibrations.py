@@ -33,7 +33,7 @@ class Vibrations:
         self.P = P
         self.F = F
         self.c = c
-        self.t_points = np.linspace(0, float(10 * P), 5000)
+        self.t_points = np.linspace(0, float(20*P), 10000) #cambiar ambos valores proporcionalmente para obtener diferentes graficos
         self.F_points = [force_periodic(xi, P, F) for xi in self.t_points]
         self.x_points: List[Decimal] = [Decimal(0)]
         self.v_points: List[Decimal] = [Decimal(0)]
