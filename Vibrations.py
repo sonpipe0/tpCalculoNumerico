@@ -92,9 +92,9 @@ class Vibrations:
 
 
 if __name__ == '__main__':
-    cList: List[Decimal] = [Decimal(1), Decimal(2)]
+    cList: List[Decimal] = [Decimal(0.001), Decimal(0.5)]
     i: int = 1
-    while cList[i] - cList[i - 1] > 0.001 or newvibrations.x_max() > 0.001:
+    while (cList[i] - cList[i - 1]).copy_abs() > 0.001:
         vibrations = Vibrations(m, K, x_adm, P, F, cList[i])
         vibrations.calculate()
         vibrations.graph()
@@ -110,5 +110,7 @@ if __name__ == '__main__':
     print(cList[len(cList) - 1])
     print(cList)
     finalVibrations.calculate()
-    print(finalVibrations.x_max())
+    print(f"Xmax = {finalVibrations.x_max()}  c = {finalVibrations.c}")
     finalVibrations.graph()
+    print(f"xMax<xAdm ={finalVibrations.x_max() < x_adm}")
+    print(f"Xmax-Xadm = {finalVibrations.x_max() - x_adm}")
